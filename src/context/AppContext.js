@@ -3,6 +3,8 @@ import React, { createContext, useReducer } from 'react';
 // 5. The reducer - this is used to update the state, based on the action
 export const AppReducer = (state, action) => {
     let budget = 0;
+    console.log("Total budget " + state.budget);
+    console.log("total_budget:: " + state.total_budget);
     switch (action.type) {
         case 'ADD_EXPENSE':
             let total_budget = 0;
@@ -78,7 +80,7 @@ export const AppReducer = (state, action) => {
 
 // 1. Sets the initial state when the app loads
 const initialState = {
-    budget: 2000,
+    budget: 20000,
     expenses: [
         { id: "Marketing", name: 'Marketing', cost: 50 },
         { id: "Finance", name: 'Finance', cost: 300 },
@@ -99,7 +101,9 @@ export const AppProvider = (props) => {
     const [state, dispatch] = useReducer(AppReducer, initialState);
     let remaining = 0;
 
+    console.log("blah");
     if (state.expenses) {
+        console.log("in state.expenses");
             const totalExpenses = state.expenses.reduce((total, item) => {
             return (total = total + item.cost);
         }, 0);
