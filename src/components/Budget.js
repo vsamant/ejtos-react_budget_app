@@ -3,15 +3,11 @@ import { AppContext } from '../context/AppContext';
 
 const Budget = () => {
     const { budget, currency, dispatch, expenses  } = useContext(AppContext);
-    //const { expenses } = useContext(AppContext);
+    const [ lbudget, setLbudget] = useState(budget);
 
     const totalExpenses = expenses.reduce((total, item) => {
         return (total += item.cost);
     }, 0);
-    // how to get default value for budget
-    //let [lbudget] = useState()
-    const [ lbudget, setLbudget] = useState(budget);
-    //lbudget = budget;
 
     const submitEvent = (newb) => {
         console.log("prev budget " + budget);
@@ -21,7 +17,6 @@ const Budget = () => {
             alert("You can reduce the budget lower than the spending");
         } else {
             setLbudget(newb);
-            //console.log()
 
             dispatch({
                 type: 'SET_BUDGET',
@@ -32,16 +27,18 @@ const Budget = () => {
         console.log("state budget" + budget);
     }
 
+    const alertType = 'alert-secondary'
+
     return (
-        <div className='alert alert-secondary'>
-            <span>Budget: {currency}<input
+        <div className={`alert ${alertType}`}>
+            <span>Budget:&nbsp;&nbsp;&nbsp;&nbsp;{currency}<input
                     required='required'
                     type='number'
                     id='maxbudget'
                     step="10"
                     max="20000"
                     value={lbudget}
-                    style={{ marginLeft: '2rem' , size: 10}}
+                    style={{  width: '12em'}}
                     onChange={(event) => submitEvent(event.target.value)}>
                 </input>            
             </span>
