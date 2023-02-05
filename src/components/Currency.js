@@ -30,13 +30,13 @@ const Currency = () => {
             payload: newc,
         });
     }
-
+/*
     return (
         <div className='alert alert-primary'>
             <span>
                 Currency ({lcurrency} {lname})
             <select className="custom-select" id="inputGroupSelect01" onChange={(event) => submitEvent(event.target.value)}>
-                 <option value="$" name="Dollar">$ Dollar</option>
+                <option value="$" name="Dollar">$ Dollar</option>
                 <option value="£" name="Pound">£ Pound</option>
                 <option value="€" name="Euro">€ Euro</option>
                 <option value="₹" name="Rupee">₹ Ruppee</option>
@@ -45,6 +45,18 @@ const Currency = () => {
 
         </div>
     );
+    */
+   return (
+    <div className='dropdown'>
+        <button>Currency ({lcurrency} {lname})</button>
+        <div class="dropdown-options">
+            <a href="#" onClick={()=>submitEvent('$')}>$ Dollar</a>
+            <a href="#" onClick={()=>submitEvent('£')}>£ Pound</a>
+            <a href="#" onClick={()=>submitEvent('€')}>€ Euro</a>
+            <a href="#" onClick={()=>submitEvent('₹')}>₹ Ruppee</a>
+        </div>
+    </div>
+);   
 };
 
 export default Currency;
