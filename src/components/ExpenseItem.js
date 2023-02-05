@@ -1,4 +1,6 @@
 import React, { useContext } from 'react';
+import { FcPlus } from 'react-icons/fc';
+import {FcMinus } from 'react-icons/fc';
 import { TiDelete } from 'react-icons/ti';
 import { AppContext } from '../context/AppContext';
 
@@ -12,9 +14,9 @@ const ExpenseItem = (props) => {
         });
     };
 
-    const increaseAllocation = (name) => {
+    const increaseAllocation = () => {
         const expense = {
-            name: name,
+            name: props.name,
             cost: 10,
         };
 
@@ -27,7 +29,7 @@ const ExpenseItem = (props) => {
 
     const decreaseAllocation = (name) => {
         const expense = {
-            name: name,
+            name: props.name,
             cost: 10,
         };
 
@@ -43,8 +45,8 @@ const ExpenseItem = (props) => {
         <tr>
         <td>{props.name}</td>
         <td>{currency}{props.cost}</td>
-        <td><button onClick={event=> increaseAllocation(props.name)}>+</button></td>
-        <td><button onClick={event=> decreaseAllocation(props.name)}>-</button></td>
+        <td><FcPlus size='1.5em' onClick={increaseAllocation}></FcPlus></td>
+        <td><FcMinus size='1.5em' onClick={decreaseAllocation}></FcMinus></td>
         <td><TiDelete size='1.5em' onClick={handleDeleteExpense}></TiDelete></td>
         </tr>
     );
